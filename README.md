@@ -1,3 +1,7 @@
+:warning: NOTICE: 
+
+This fork is purely intended for use in https://github.com/JoniVR/MonitorControl, support won't be provided here.
+
 # MASPreferences
 
 This component is intended as a replacement for SS_PrefsController by Matt Legend Gemmell and Selectable Toolbar by Brandon Walkin. It is designed to use NSViewController subclasses for preference panes.
