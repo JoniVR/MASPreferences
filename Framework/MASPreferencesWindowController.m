@@ -220,7 +220,9 @@ static NSString * PreferencesKeyForViewBounds (NSString *identifier)
         // With 10.10 and later AppKit will invoke viewDidDisappear so we need to prevent it from being called twice.
         if (![NSViewController instancesRespondToSelector:@selector(viewDidDisappear)])
             if ([_selectedViewController respondsToSelector:@selector(viewDidDisappear)])
-                [_selectedViewController viewDidDisappear];
+                if (@available(macOS 10.10, *)) {
+                    [_selectedViewController viewDidDisappear];
+                }
         _selectedViewController = nil;
     }
 
