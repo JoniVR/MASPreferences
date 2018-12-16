@@ -89,7 +89,9 @@ static NSString * PreferencesKeyForViewBounds (NSString *identifier)
     NSString *origin = [[NSUserDefaults standardUserDefaults] stringForKey:kMASPreferencesFrameTopLeftKey];
     if (origin)
     {
-        [self.window layoutIfNeeded];
+        if (@available(macOS 10.7, *)) {
+            [self.window layoutIfNeeded];
+        }
         [self.window setFrameTopLeftPoint:NSPointFromString(origin)];
     }
 
@@ -279,7 +281,9 @@ static NSString * PreferencesKeyForViewBounds (NSString *identifier)
     // See https://github.com/shpakovski/MASPreferences/issues/32 for more info.
     if (![NSViewController instancesRespondToSelector:@selector(viewWillAppear)])
         if ([controller respondsToSelector:@selector(viewWillAppear)])
-            [controller viewWillAppear];
+            if (@available(macOS 10.10, *)) {
+                [controller viewWillAppear];
+            }
     
     [self.window setContentView:controllerView];
     [self.window recalculateKeyViewLoop];
